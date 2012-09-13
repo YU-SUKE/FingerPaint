@@ -1,4 +1,4 @@
-package sample.application.memopad;
+package sample.application.fingerpaint;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

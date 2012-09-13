@@ -1,4 +1,4 @@
-package sample.application.memopad;
+package sample.application.fingerpaint;
 
 import android.app.Activity;
 import android.app.ListActivity;

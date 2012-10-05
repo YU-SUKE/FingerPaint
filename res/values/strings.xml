@@ -5,8 +5,15 @@
     <string name="app_name">手書きメモ</string>
     <string name="memodb_empty">メモが見つかりません</string>
     <string name="menu_save">保存</string>
-    <string name="menu_open">開く</string>
     <string name="menu_new">新規作成</string>
     <string name="menu_close">閉じる</string>
+    <string name="button_up">上のフォルダー</string>
+    <string name="fileist_empty">ファイルがありません</string>
+    <string name="menu_open">開く</string>
+    <string name="menu_color_change">色の変更</string>
+    <string name="confirm_new">現在の作業内容が失われます。よろしいですか。</string>
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">キャンセル</string>
+    <string name="title_exit">終了</string>
 
 </resources>

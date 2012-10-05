@@ -3,6 +3,9 @@
     <item android:id="@+id/menu_save" android:title="@string/menu_save" android:icon="@android:drawable/ic_menu_save"></item>
     <item android:id="@+id/menu_open" android:title="@string/menu_open"></item>
     <item android:id="@+id/menu_new" android:title="@string/menu_new"></item>
+    <item android:id="@+id/menu_open" android:title="@string/menu_open" android:icon="@android:drawable/ic_menu_set_as"></item>
+    <item android:id="@+id/menu_color_change" android:title="@string/menu_color_change"></item>
+    <item android:id="@+id/menu_new" android:icon="@android:drawable/ic_menu_add" android:title="@string/menu_new"></item>
     
 
 </menu>

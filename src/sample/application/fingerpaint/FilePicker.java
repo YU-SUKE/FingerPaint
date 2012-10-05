@@ -21,13 +21,14 @@ public class FilePicker extends ListActivity {
 	String dir,externalStorageDir;
 	FileFilter fFilter;
 	Comparator<Object> comparator;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.filelist);
 		externalStorageDir = Environment.getExternalStorageDirectory().toString();
-		dir = externalStorageDir+"/text";
+		SharedPreferences pref = this.getSharedPreferences("FilePickerPrefs", MODE_PRIVATE);
+		dir = pref.getString("Folder", externalStorageDir+"/mypaint");
 		makeFileFilter();
 		makeComparator();
 		showList();
@@ -37,7 +38,7 @@ public class FilePicker extends ListActivity {
 		fFilter = new FileFilter(){
 			public boolean accept(File file){
 				Pattern P = Pattern.compile
-				("\\/txt$|\\.ini$|\\.xml$|\\.htm$|\\.csv$|\\.java$,Pattern.CASE_INSENSITIVE");
+						("\\.png$|\\.jpg$|\\.gif$|\\.jpeg$|\\.bmp$",Pattern.CASE_INSENSITIVE);
 				Matcher m = p.matcher(file.getName());
 				boolean shown = (m.find()||file.isDirectory())&&!file.isHidden();
 				return shown;
@@ -47,7 +48,6 @@ public class FilePicker extends ListActivity {
 	
 	void makeComparator(){
 		comparator = new Comparator<Object>(){
-			
 			public int compare(Object object1, Object object2){
 				int pad1 = 0;
 				int pad2 = 0;
@@ -77,10 +77,10 @@ public class FilePicker extends ListActivity {
 		lv.setOnItemClickListener(new OnItemClickListener(){
 			
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id){
-				if(((File) adapter.getItem(position)).isDirectory());
+				if(((File) adapter.getItem(position)).isDirectory());{
 					dir = ((File) adapter.getItem(position)).getPath();
 					showList();
-			}else{
+				}else{
 					Intent i = new Intent();
 					i.putExtra("fn",((File) adapter.getItem(position)).getPath());
 					setResult(RESULT_OK,i);
@@ -101,4 +101,12 @@ public class FilePicker extends ListActivity {
 		showList();
 	}
 
+	protected void onStop(){
+		super.onStop();
+		SharedPreferences pref = this.getSharedPreferences("FilePickerPrefs", MODE_PRIVATE);
+		SharedPreferences.Editor editor = pref.edit();
+		editor.putString("Folder", dir);
+		editor.commit();
+	}	
+	
 }
